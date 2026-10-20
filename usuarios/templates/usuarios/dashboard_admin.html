@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Panel de administración{% endblock %}
+{% block content %}
+<div class="contenedor">
+    <h1>Bienvenido, {{ usuario.username }}</h1>
+    <p>Panel de Administración</p>
+
+    <div class="resumen" style="grid-template-columns: repeat(2, 1fr); max-width:700px;">
+        <a href="{% url 'lista_residentes' %}" class="card">Gestión de Residentes</a>
+        <a href="{% url 'lista_vehiculos' %}" class="card">Gestión de Vehículos</a>
+        <a href="{% url 'lista_zonas' %}" class="card">Zonas Comunes</a>
+        <a href="{% url 'lista_reservas' %}" class="card">Todas las Reservas</a>
+        <a href="{% url 'lista_pagos_admin' %}" class="card">Estado de Pagos</a>
+        <a href="{% url 'lista_reportes_admin' %}" class="card">Gestión de Reportes</a>
+        <a href="{% url 'cambiar_password' %}" class="card">Cambiar Contraseña</a>
+    </div>
+
+    <a href="{% url 'logout' %}" class="btn btn-secundario" style="margin-top:2rem; display:inline-flex;">Cerrar sesión</a>
+</div>
+{% endblock %}

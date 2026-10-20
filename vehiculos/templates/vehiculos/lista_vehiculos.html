@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Vehículos{% endblock %}
+{% block content %}
+<div class="contenedor">
+    <h1>Vehículos</h1>
+
+    <form method="get" style="display:flex; gap:0.6rem; margin-bottom:1.25rem; max-width:400px;">
+        <input type="text" name="buscar" placeholder="Buscar por placa">
+        <button type="submit" class="btn btn-secundario">Buscar</button>
+    </form>
+
+    <a href="{% url 'crear_vehiculo' %}" class="btn btn-primario" style="margin-bottom:1.5rem; display:inline-flex;">+ Nuevo vehículo</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Placa</th>
+                <th>Marca / Modelo</th>
+                <th>Color</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for v in vehiculos %}
+            <tr>
+                <td>{{ v.placa }}</td>
+                <td>{{ v.marca }} {{ v.modelo }}</td>
+                <td>{{ v.color }}</td>
+                <td><a href="{% url 'editar_vehiculo' v.id_vehiculo %}">Editar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
